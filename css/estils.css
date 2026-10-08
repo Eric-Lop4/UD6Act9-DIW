@@ -1,0 +1,27 @@
+body {
+  background-image: url("/fons_nivells/nivell1.jpg");
+  background-size: cover;
+  background-position: center;
+  height : 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+#avio {
+  /* açò caldrà llevar-ho al posar els teus estils, però per a que veges
+  on està en la pantalla ho he posat amb un color i li he donat un tamanys inicial*/
+  background-color: blue;
+  width: 10px;
+  height: 10px;
+  position:absolute;
+}
+
+.menu_inf {
+  background-color: rgba(115, 169, 179, 0.8);
+  color: white;
+  border: 2px solid rgba(0, 140, 255, 0.35);
+  border-radius: 50px;
+  width: 110px;
+  height: 50px;
+  margin: 20px;
+}
