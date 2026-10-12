@@ -6,9 +6,15 @@ const pixels_a_moure = 15;
 
 document.addEventListener('DOMContentLoaded', main);
 
+const sonido = new Audio('./audio/musica_fons.mp3');
+const sonido_avio = new Audio('./audio/avio_es_mou.mp3');
+
+sonido.play();
+sonido.loop = true;
+
 function main() {
-    document.getElementById('nivell1').addEventListener('click', fondo1);
-    document.getElementById('nivell2').addEventListener('click', fondo2);
+  document.getElementById('nivell1').addEventListener('click', fondo1);
+  document.getElementById('nivell2').addEventListener('click', fondo2);
 }
 
 function moureEsquerra() {
@@ -26,6 +32,9 @@ function moureEsquerra() {
   //                   todo                         */
   //*************************************************/
   element.style.left = getAvioPos(element).left - pixels_a_moure + "px";
+  if (getAvioPos(element).left < 0) {
+    element.style.left = "0px";
+  }
 }
 
 function moureDreta() {
@@ -43,6 +52,10 @@ function moureDreta() {
   //                   todo                         */
   //*************************************************/
   element.style.left = getAvioPos(element).left + pixels_a_moure + "px";
+  const limiteDerecho = document.documentElement.clientWidth - element.offsetWidth;
+  if (getAvioPos(element).left > limiteDerecho) {
+    element.style.left = limiteDerecho + "px";
+  }
 }
 
 function moureAmunt() {
@@ -60,6 +73,9 @@ function moureAmunt() {
   //                   todo                         */
   //*************************************************/
   element.style.top = getAvioPos(element).top - pixels_a_moure + "px";
+  if (getAvioPos(element).top < 0) {
+    element.style.top = "0px";
+  }
 }
 
 function moureAvall() {
@@ -77,6 +93,9 @@ function moureAvall() {
   //                   todo                         */
   //*************************************************/
   element.style.top = getAvioPos(element).top + pixels_a_moure + "px";
+  if (getAvioPos(element).top > window.innerHeight - element.offsetHeight) {
+    element.style.top = window.innerHeight - element.offsetHeight + "px";
+  } 
 }
 
 function passarANumero(n) {
@@ -101,6 +120,8 @@ function getAvioPos() {
  * @param {*} evt: event que es llança
  */
 function moureAvio(evt) {
+  const posicioAnterior = getAvioPos();
+
   switch (evt.keyCode) {
     case 37:
       /** hem apretat la tecla de fletxa esquerra */
@@ -125,12 +146,20 @@ function moureAvio(evt) {
     //que la música s'active o es desactive segons estava
     //abans activada o no activada
   }
+
+  const posicioActual = getAvioPos();
+
+  if (posicioActual.left !== posicioAnterior.left || posicioActual.top !== posicioAnterior.top) {
+    sonido_avio.play();
+    document.getElementById("fuego").style.display = "block";
+  }
 }
 /**
  * Funció encarregada de fer el que calga quan es pare l'avió
  */
 function pararAvio() {
   console.log("parem l'avió");
+  document.getElementById("fuego").style.display = "none";
 }
 
 function docReady() {
@@ -141,9 +170,9 @@ function docReady() {
 /**
  * Funció per a cambiar el fondo
  */
-function fondo1 () {
+function fondo1() {
   document.body.style.backgroundImage = "url('/fons_nivells/nivell1.jpg')";
 }
-function fondo2 () {
+function fondo2() {
   document.body.style.backgroundImage = "url('/fons_nivells/nivell2.jpg')";
 }

@@ -12,17 +12,29 @@
 
 <body onload="docReady()">
     <header>
-        <div class="marcador"></div>
+        <div class="marcador">
+            <p>100p</p>
+        </div>
     </header>
     <main>
         <!-- avió -->
-        <div id="avio"></div>
+        <div id="avio">
+            <img id="fuego" src="foc.png" alt="">
+        </div>
         <!-- botons -->
         <div id="botons">
-            <button class="menu_inf">Ajuda</button>
+            <button class="menu_inf"><a href="#modalAjuda">Ajuda</a></button>
             <button class="menu_inf" id="nivell1">Nivell 1</button>
             <button class="menu_inf" id="nivell2">Nivell 2</button>
         </div>
+
+        <!-- Finestra modal d'ajuda -->
+        <div id="modalAjuda" class="modalmask">
+            <div class="modalbox rotate">
+                <a href="#" class="close">X</a>
+            </div>
+        </div>
+
     </main>
 </body>
 
