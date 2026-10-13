@@ -1,5 +1,5 @@
 body {
-  background-image: url("/fons_nivells/nivell1.jpg");
+  background-image: url("../fons_nivells/nivell1.jpg");
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -43,19 +43,28 @@ body {
   on està en la pantalla ho he posat amb un color i li he donat un tamanys inicial*/
   width: 80px;
   height: 80px;
-  background-image: url("../avio.png");
+  background-image: url("../img/avio.png");
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
   position: absolute;
   z-index: 1;
+  animation: float 3s ease-in-out infinite;
 }
 
-#fuego {
-  width: 50px;
-  position: absolute;
-  left: -40px;
-  top: 20px;
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+#avio.moviment {
+  width: 80px;
+  height: 80px;
+  background-image: url("../img/avio_moviment.png");
 }
 
 #botons {
@@ -76,7 +85,10 @@ body {
   height: 50px;
   margin: 20px;
   z-index: 2;
-  
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .menu_inf:hover {
@@ -86,51 +98,51 @@ body {
 }
 
 .modalmask {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 99999;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 400ms ease-in;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 99999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms ease-in;
 }
 
 .modalmask:target {
-    opacity: 1;
-    pointer-events: auto;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .modalbox {
-    width: 400px;
-    position: relative;
-    margin: 10% auto;
-    padding: 5px 20px 13px;
-    background: #fff;
-    border-radius: 3px;
-    transition: all 500ms ease-in;
+  width: 400px;
+  position: relative;
+  margin: 10% auto;
+  padding: 5px 20px 13px;
+  background: #fff;
+  border-radius: 3px;
+  transition: all 500ms ease-in;
 }
 
 .rotate {
-    transform: scale(-5, -5);
+  transform: scale(-5, -5);
 }
 
 .modalmask:target .rotate {
-    transform: rotate(360deg) scale(1, 1);
+  transform: rotate(360deg) scale(1, 1);
 }
 
 .close {
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    width: 24px;
-    line-height: 25px;
-    text-align: center;
-    text-decoration: none;
-    font-weight: bold;
-    color: #fff;
-    background: #606061;
-    border-radius: 3px;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 24px;
+  line-height: 25px;
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  color: #fff;
+  background: #606061;
+  border-radius: 3px;
 }

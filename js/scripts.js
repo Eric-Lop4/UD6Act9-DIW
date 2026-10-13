@@ -19,18 +19,6 @@ function main() {
 
 function moureEsquerra() {
   let element = document.getElementById("avio");
-  //ací agafarem la posició actual on estiga l'avió amb
-  //getAvioPos(element)
-  //i el mourem "pixels_a_moure" píxels cap a l'esquerra.
-  //Ex:
-  //   getAvioPos(element).left torna la posició de l'eix X de l'avió
-  //   getAvioPos(element).top torna la posició de l'eix Y de l'avió
-  //Per a canviar-li la posició a un element html cal
-  //posar  element.style ... (cerca per internet per veure
-  //quines propietats té style que estiguen relacionades amb posicions)
-  //************** per completar per l'alumne *******/
-  //                   todo                         */
-  //*************************************************/
   element.style.left = getAvioPos(element).left - pixels_a_moure + "px";
   if (getAvioPos(element).left < 0) {
     element.style.left = "0px";
@@ -39,18 +27,6 @@ function moureEsquerra() {
 
 function moureDreta() {
   let element = document.getElementById("avio");
-  //ací agafarem la posició actual on estiga l'avió amb
-  //getAvioPos(element)
-  //i el mourem "pixels_a_moure" píxels cap a la dreta.
-  //Ex:
-  //   getAvioPos(element).left torna la posició de l'eix X de l'avió
-  //   getAvioPos(element).top torna la posició de l'eix Y de l'avió
-  //Per a canviar-li la posició a un element html cal
-  //posar  element.style ... (cerca per internet per veure
-  //quines propietats té style que estiguen relacionades amb posicions)
-  //************** per completar per l'alumne *******/
-  //                   todo                         */
-  //*************************************************/
   element.style.left = getAvioPos(element).left + pixels_a_moure + "px";
   const limiteDerecho = document.documentElement.clientWidth - element.offsetWidth;
   if (getAvioPos(element).left > limiteDerecho) {
@@ -60,18 +36,6 @@ function moureDreta() {
 
 function moureAmunt() {
   let element = document.getElementById("avio");
-  //ací agafarem la posició actual on estiga l'avió amb
-  //getAvioPos(element)
-  //i el mourem "pixels_a_moure" píxels cap amunt.
-  //Ex:
-  //   getAvioPos(element).left torna la posició de l'eix X de l'avió
-  //   getAvioPos(element).top torna la posició de l'eix Y de l'avió
-  //Per a canviar-li la posició a un element html cal
-  //posar  element.style ... (cerca per internet per veure
-  //quines propietats té style que estiguen relacionades amb posicions)
-  //************** per completar per l'alumne *******/
-  //                   todo                         */
-  //*************************************************/
   element.style.top = getAvioPos(element).top - pixels_a_moure + "px";
   if (getAvioPos(element).top < 0) {
     element.style.top = "0px";
@@ -80,18 +44,6 @@ function moureAmunt() {
 
 function moureAvall() {
   let element = document.getElementById("avio");
-  //ací agafarem la posició actual on estiga l'avió amb
-  //getAvioPos(element)
-  //i el mourem "pixels_a_moure" píxels cap avall.
-  //Ex:
-  //   getAvioPos(element).left torna la posició de l'eix X de l'avió
-  //   getAvioPos(element).top torna la posició de l'eix Y de l'avió
-  //Per a canviar-li la posició a un element html cal
-  //posar  element.style ... (cerca per internet per veure
-  //quines propietats té style que estiguen relacionades amb posicions)
-  //************** per completar per l'alumne *******/
-  //                   todo                         */
-  //*************************************************/
   element.style.top = getAvioPos(element).top + pixels_a_moure + "px";
   if (getAvioPos(element).top > window.innerHeight - element.offsetHeight) {
     element.style.top = window.innerHeight - element.offsetHeight + "px";
@@ -120,6 +72,15 @@ function getAvioPos() {
  * @param {*} evt: event que es llança
  */
 function moureAvio(evt) {
+
+  if (evt.key === "1") {
+    if (sonido.paused) {
+      sonido.play();
+    } else {
+      sonido.pause();
+    }
+  }
+
   const posicioAnterior = getAvioPos();
 
   switch (evt.keyCode) {
@@ -139,27 +100,22 @@ function moureAvio(evt) {
       /** hem apretat la tecla de fletxa avall */
       moureAvall();
       break;
-    //************** per completar per l'alumne *******/
-    //                   todo                         */
-    //*************************************************/
-    //mira quina tecla és el valor 1 el teclat i fes
-    //que la música s'active o es desactive segons estava
-    //abans activada o no activada
   }
 
   const posicioActual = getAvioPos();
 
   if (posicioActual.left !== posicioAnterior.left || posicioActual.top !== posicioAnterior.top) {
     sonido_avio.play();
-    document.getElementById("fuego").style.display = "block";
+    document.getElementById("avio").classList.add("moviment");
   }
 }
+
 /**
  * Funció encarregada de fer el que calga quan es pare l'avió
  */
 function pararAvio() {
   console.log("parem l'avió");
-  document.getElementById("fuego").style.display = "none";
+  document.getElementById("avio").classList.remove("moviment");
 }
 
 function docReady() {
@@ -171,8 +127,8 @@ function docReady() {
  * Funció per a cambiar el fondo
  */
 function fondo1() {
-  document.body.style.backgroundImage = "url('/fons_nivells/nivell1.jpg')";
+  document.body.style.backgroundImage = "url('fons_nivells/nivell1.jpg')";
 }
 function fondo2() {
-  document.body.style.backgroundImage = "url('/fons_nivells/nivell2.jpg')";
+  document.body.style.backgroundImage = "url('fons_nivells/nivell2.jpg')";
 }
