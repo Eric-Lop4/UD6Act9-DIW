@@ -63,7 +63,7 @@ body {
 }
 
 #avio.moviment {
-  width: 80px;
+  width: 100px;
   height: 80px;
   background-image: url("../img/avio_moviment.png");
 }
@@ -76,6 +76,33 @@ body {
   bottom: 0;
   border-top: 2px solid rgba(255, 255, 255, 0.7);
   z-index: 3;
+}
+
+#titol_ajuda {
+  background-color: #6897AB;
+  padding: 15px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+  margin-top: 25px;
+  box-sizing: border-box;
+}
+
+.text_ajuda {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0;
+}
+
+.text_ajuda li {
+  display: flex;
+  gap: 10px;
+}
+
+#so_ajuda{
+  font-weight: bold;
 }
 
 .menu_inf {
@@ -94,7 +121,7 @@ body {
 }
 
 .menu_inf:hover {
-  background-color: rgba(75, 120, 129, 0.95);
+  background-color: rgba(99, 148, 158, 0.822);
   color: white;
   border: 2px solid rgba(0, 80, 180, 0.7);
 }
