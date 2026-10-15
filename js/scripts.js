@@ -73,6 +73,10 @@ function getAvioPos() {
  */
 function moureAvio(evt) {
 
+  if (document.querySelector(".modalmask:target")){
+    return;
+  }
+
   if (evt.key === "1") {
     if (sonido.paused) {
       sonido.play();
