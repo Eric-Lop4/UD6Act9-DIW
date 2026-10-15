@@ -77,6 +77,8 @@ function moureAvio(evt) {
     return;
   }
 
+  const avio = document.getElementById("avio");
+
   if (evt.key === "1") {
     if (sonido.paused) {
       sonido.play();
@@ -90,10 +92,12 @@ function moureAvio(evt) {
   switch (evt.keyCode) {
     case 37:
       /** hem apretat la tecla de fletxa esquerra */
+      avio.classList.add("mirant-esquerra");
       moureEsquerra();
       break;
     case 39:
       /** hem apretat la tecla de fletxa dreta */
+      avio.classList.remove("mirant-esquerra");
       moureDreta();
       break;
     case 38:

@@ -34,7 +34,7 @@ p {
 }
 
 .marcador::before{
-  content: "100p";
+  content: "100pt";
   z-index: 4;
   font-family: Modak;
   color: rgba(204, 43, 62, 0.8);
@@ -55,6 +55,10 @@ p {
   position: absolute;
   z-index: 1;
   animation: float 3s ease-in-out infinite;
+}
+
+#avio.mirant-esquerra {
+  scale: -1 1;
 }
 
 @keyframes float {
